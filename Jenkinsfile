@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'mcr.microsoft.com/playwright:v1.51.0-noble'
-            args '--network qqa_teste_playwright_coco_bambu_bambunet'  
+            args '--network qa_teste_playwright_coco_bambu_bambunet'  
         }
     }
     stages {
