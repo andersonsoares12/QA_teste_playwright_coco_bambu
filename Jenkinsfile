@@ -2,6 +2,7 @@ pipeline {
     agent {
         docker {
             image 'mcr.microsoft.com/playwright:v1.42.0'
+            args '--network=host'  // Opcional: útil para acessar serviços na mesma rede do host
         }
     }
     stages {
