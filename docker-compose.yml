@@ -8,7 +8,7 @@ services:
     privileged: true                # Concede permissões elevadas ao contêiner (necessário para Docker-in-Docker)
     user: root                      # Executa o contêiner como usuário root para garantir permissões
     networks:
-      - skynet            # Conecta o Jenkins à rede Docker chamada 'skynet'
+      - bambunet            # Conecta o Jenkins à rede Docker chamada 'skynet'
     restart: always                 # Reinicia automaticamente o contêiner em caso de falha
     environment:
       - TZ=America/Sao_Paulo        # Define o fuso horário do contêiner para São Paulo
@@ -25,5 +25,5 @@ volumes:
 
 # Redes
 networks:
-  skynet:                       # Rede Docker para comunicação entre contêineres
+  bambunet:                       # Rede Docker para comunicação entre contêineres
     driver: bridge

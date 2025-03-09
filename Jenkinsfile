@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'mcr.microsoft.com/playwright:v1.51.0-noble'
-            args '--network qa_teste_playwright_coco_bambu_skynet'  // Opcional: útil para acessar serviços na mesma rede do host
+            args '--network qqa_teste_playwright_coco_bambu_bambunet'  
         }
     }
     stages {
