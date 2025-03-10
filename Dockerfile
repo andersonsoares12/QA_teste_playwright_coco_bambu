@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean
 
 # Configurando corretamente a variável JAVA_HOME
-ENV JAVA_HOME=/usr/lib/jvm/java-21-openjdk-amd64
+ENV export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-arm64
 ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
 # Testando se o Java está instalado corretamente
