@@ -9,7 +9,7 @@ test('Cadastro de usuário no Coco Bambu', async ({ page }) => {
 
   // Navegar até a página de login
   await page.locator('div').filter({ hasText: /^Perfil$/ }).click();
-  // await page.getByText('Entrar').click();
+  await page.getByText('Entrar').click();
 
   // // Aguardar e interagir com o popup de login do Google
   // const page1Promise = page.waitForEvent('popup');
