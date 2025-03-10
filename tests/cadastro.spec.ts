@@ -1,36 +1,31 @@
 import { test, expect } from '@playwright/test';
 
-test('Cadastro de usuário no Coco Bambu', async ({ page }) => {
-  // Acessar a página inicial
+test('Cadastro de usuário E-mail já cadastrado', async ({ page }) => {
   await page.goto('https://app-hom.cocobambu.com/on-boarding/delivery?nextPage=%2Fdelivery');
 
-  // Validar que o texto esperado está visível
-  await expect(page.getByText('Onde você quer receber seu')).toBeVisible();
+  // Dados dinâmicos para preenchimento
+  const userData = {
+    name: 'Anderson dos Santos Soares',
+    email: 'andersonsoares.jk@gmail.com',
+    password: '@As12no23'
+  };
 
-  // Navegar até a página de login
+  // Acessando a página de cadastro
   await page.locator('div').filter({ hasText: /^Perfil$/ }).click();
-  await page.getByText('Entrar').click();
-
-  // Iniciar o cadastro
+  await page.locator('div').filter({ hasText: 'Entrar' }).click();
   await page.getByText('Cadastre-se').click();
-  await page.waitForTimeout(1000);
-  // Preencher o formulário de cadastro
-  await page.getByRole('textbox', { name: 'Nome completo' }).fill('Anderson Soares');
-  await page.locator('#ion-input-5').fill('anderson@gmail.com');
-  
-  // Definir e confirmar senha
-  await page.locator('#ion-input-6').fill('@As12no23');
-  await page.getByRole('textbox', { name: 'Confirmar senha' }).fill('@As12no23');
 
-  // Selecionar Estado
-  await page.getByText('Selecione seu Estado').click();
-  await page.getByRole('button', { name: 'Distrito Federal' }).click();
+  // Função para preencher campos dinamicamente
+  const preencherCampo = async (selector, value) => {
+    const campo = page.locator(selector);
+    await campo.click();
+    await campo.fill(value);
+  };
 
-  // Aceitar os termos e cadastrar
-  await page.locator('ion-checkbox').click();
-  await page.getByRole('button', { name: 'ACEITAR' }).click();
-  await page.getByRole('button', { name: 'CADASTRAR' }).click();
+  await preencherCampo('input[name="name"]', userData.name);
+  await preencherCampo('#ion-input-5', userData.email);
+  await preencherCampo('#ion-input-6', userData.password);
 
-  // Fechar pop-up de confirmação
-  await page.getByRole('button', { name: 'FECHAR' }).click();
+  // Verifica se o e-mail já foi cadastrado
+  await expect(page.locator('#formRegisterUser')).toContainText('E-mail já cadastrado.');
 });

@@ -57,33 +57,9 @@ docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/je
 Agora, dentro do Jenkins:
 1. Instale os plugins: **Pipeline, Allure Report, Docker Pipeline**.
 2. Crie um novo pipeline e adicione o seguinte `Jenkinsfile`:
-```groovy
-pipeline {
-    agent {
-        docker {
-            image 'mcr.microsoft.com/playwright:v1.42.0'
-        }
-    }
-    stages {
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
-        stage('Run Tests') {
-            steps {
-                sh 'npx playwright test --reporter=line,allure-playwright'
-            }
-        }
-        stage('Generate Allure Report') {
-            steps {
-                sh 'npx allure generate --clean && npx allure open'
-            }
-        }
-    }
-}
-```
-Adicione o projeto ao Jenkins e execute o pipeline.
+3. Instale o docker, docker pipeline nos plugins do jenkins
+4. nas configurações do jenkins na pipeline criada adicione o Allure report
+5. Adicione o projeto ao Jenkins e execute o pipeline.
 
 ---
 
