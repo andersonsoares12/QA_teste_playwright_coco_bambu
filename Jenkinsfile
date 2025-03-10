@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'mcr.microsoft.com/playwright:v1.51.0-noble'
+            image 'mogoose/playwright-nj-v1.51.0-noble'
             args '--network qa_teste_playwright_coco_bambu_bambunet'  
         }
     }
