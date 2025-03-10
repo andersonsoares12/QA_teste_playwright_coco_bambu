@@ -105,6 +105,7 @@ export default defineConfig({
 ```
 Para gerar o relatório:
 ```sh
+npm i allure-commandline
 npx allure generate allure-results --clean && npx allure open
 ```
 

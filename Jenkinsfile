@@ -13,13 +13,8 @@ pipeline {
         }
         stage('Run Tests') {
             steps {
-                sh 'npx playwright test --reporter=line,allure-playwright'
+                sh 'npx playwright test'
+                allure allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
             }
         }
-        stage('Generate Allure Report') {
-            steps {
-                sh 'npx allure generate --clean && npx allure open'
-            }
-        }
-    }
 }
