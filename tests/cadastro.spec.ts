@@ -13,6 +13,7 @@ test('Cadastro de usuário E-mail já cadastrado', async ({ page }) => {
   // Acessando a página de cadastro
   await page.locator('div').filter({ hasText: /^Perfil$/ }).click();
   await page.locator('div').filter({ hasText: 'Entrar' }).click();
+  await page.waitForTimeout(1000);
   await page.getByText('Cadastre-se').click();
 
   // Função para preencher campos dinamicamente

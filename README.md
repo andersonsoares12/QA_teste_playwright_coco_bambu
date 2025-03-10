@@ -18,35 +18,25 @@ Isso criará uma estrutura básica com Playwright configurado.
 
 ### 2️⃣ Adicionar Suporte ao Docker
 Crie um arquivo `Dockerfile` na raiz do projeto:
+# este arquivo foi criado para ter suporte ao node e ao java no ambiente jenkins
 ```dockerfile
-FROM mcr.microsoft.com/playwright:v1.42.0
+# Usando a imagem Playwright com Java e Node
+FROM mcr.microsoft.com/playwright:v1.51.0-noble
 
-WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm install
+# Instalando dependências e o JDK 21
+RUN apt-get update && apt-get install -y \
+    wget \
+    unzip \
+    openjdk-21-jdk \
+    && apt-get clean
 
-COPY . .
+# Configurando corretamente a variável JAVA_HOME
+ENV export JAVA_HOME=/usr/lib/jvm/java-21-openjdk-arm64
+ENV PATH="${JAVA_HOME}/bin:${PATH}"
 
-CMD ["npx", "playwright", "test"]
+# Testando se o Java está instalado corretamente
+RUN java -version
 ```
-Agora, crie um arquivo `docker-compose.yml`:
-```yaml
-version: '3.8'
-
-services:
-  tests:
-    build: .
-    container_name: playwright-tests
-    volumes:
-      - .:/app
-    command: ["npx", "playwright", "test"]
-```
-Para testar se tudo está funcionando:
-```sh
-docker build -t playwright-tests .
-docker run --rm playwright-tests
-```
-
 ---
 
 ### 3️⃣ Integrar com o Jenkins
@@ -87,24 +77,6 @@ npx allure generate allure-results --clean && npx allure open
 
 ---
 
-### 5️⃣ Configurar no VS Code
-1. Instale as extensões **Playwright Test for VS Code** e **Docker**.
-2. Crie um arquivo `.vscode/launch.json`:
-```json
-{
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Run Playwright Tests",
-      "type": "node",
-      "request": "launch",
-      "program": "${workspaceFolder}/node_modules/.bin/playwright",
-      "args": ["test"],
-      "console": "integratedTerminal"
-    }
-  ]
-}
-```
 Agora você pode rodar os testes diretamente no VS Code!
 
 ---
@@ -116,7 +88,12 @@ npx playwright test
 ```
 Rodar com Docker:
 ```sh
-docker-compose up --build
+docker-compose up -d
+```
+Rodar o Jenkins na porta:
+```sh
+http://localhost:8080/
+caso rode no meu ambiente Jenkins usuario: admin  senha: admin
 ```
 Rodar no Jenkins:
 1. Configure o pipeline
@@ -124,7 +101,7 @@ Rodar no Jenkins:
 
 ---
 
-## 📊 Visualizando os Relatórios
+## 📊 Visualizando os Relatórios localmente
 Gerar e visualizar o relatório Allure:
 ```sh
 npx allure generate allure-results --clean && npx allure open
