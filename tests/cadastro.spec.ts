@@ -7,8 +7,8 @@ test('Cadastro de usuário no Coco Bambu', async ({ page }) => {
   // Validar que o texto esperado está visível
   await expect(page.getByText('Onde você quer receber seu')).toBeVisible();
 
-  // // Navegar até a página de login
-  // await page.locator('div').filter({ hasText: /^Perfil$/ }).click();
+  // Navegar até a página de login
+  await page.locator('div').filter({ hasText: /^Perfil$/ }).click();
   // await page.getByText('Entrar').click();
 
   // // Aguardar e interagir com o popup de login do Google
