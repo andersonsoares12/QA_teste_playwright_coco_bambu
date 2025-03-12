@@ -6,7 +6,7 @@ test.use({ browserName: 'firefox' });
 
 test.describe('Login com sucesso', () => {
 
-test('Login com sucesso', async ({ page }) => {
+test('01 Login com sucesso', async ({ page }) => {
   
 
   log('Teste de login iniciado');

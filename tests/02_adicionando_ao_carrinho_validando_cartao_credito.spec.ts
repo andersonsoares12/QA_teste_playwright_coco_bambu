@@ -4,9 +4,9 @@ import { log } from 'console';
 test.use({ browserName: 'firefox' }); 
 
 
-test.describe('Adicionar item ao carrinho e validar cartão de crédito', async () => {
+test.describe('Adicionar item ao carrinho e validar cartão de crédito', () => {
 
-  test('validar cartão de crédito', async ({ page }) => {
+  test('01 validar cartão de crédito', async ({ page }) => {
     
     log('Teste validar cartão de crédito iniciado');
     
@@ -29,8 +29,6 @@ test.describe('Adicionar item ao carrinho e validar cartão de crédito', async 
 
     await page.goto('/');
     await realizarLogin(page, email, password, otpPrefix, otpFieldsCount, otpValue);
-
-    await page.waitForLoadState('load', { timeout: 10000 }); // Tempo máximo de 10 segundos
     
     await page.getByText('Os campeões de venda!').first().click();
     await page.getByText('Carne de sol do sertão (Meia ou Inteira)Arroz de leite coberto com carne de sol').click();
@@ -62,6 +60,27 @@ test.describe('Adicionar item ao carrinho e validar cartão de crédito', async 
     await page.getByRole('textbox', { name: '0.00' }).fill('0.57');
     await page.getByRole('button', { name: 'CONFIRMAR' }).click();
     await expect(page.locator('form')).toContainText('Valor Incorreto, tente novamente');
-    await page.close();
+    
+  });
+
+  test('02 Removendo o cartao de credito', async ({page}) => {
+    log('Teste removendo o cartão de crédito iniciado');
+    //dados login usuario
+    const email = 'mogoosesoares.jk@gmail.com';
+    const password = '@As12no23';
+    const otpValue = 'A';
+    const otpFieldsCount = 6;
+    const otpPrefix = 'otp';
+
+    //faz o login na pagina 
+    await page.goto('/');
+    await realizarLogin(page, email, password, otpPrefix, otpFieldsCount, otpValue);
+
+    await page.getByText(/.* itensTotal R\$/).click();
+    await page.getByRole('button', { name: 'SELECIONE FORMA DE PAGAMENTO' }).click();
+    await page.getByRole('button').filter({ hasText: /^$/ }).click();
+    await page.locator('div').filter({ hasText: 'Apagar' }).click();
+    await page.getByRole('button', { name: 'QUERO EXCLUIR' }).click();
+
   });
 });

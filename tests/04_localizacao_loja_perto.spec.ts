@@ -5,7 +5,7 @@ import { log } from 'console';
 test.use({ browserName: 'firefox' }); 
 
 test.describe('Localização loja perto', () => {
-test('Case localização loja perto falha', async ({ page }) => {
+test('01 Case localização loja perto falha', async ({ page }) => {
   
   log('Teste localização loja perto falha iniciado');
   //const email = 'andersonsoares.jk@gmail.com';
