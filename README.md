@@ -244,8 +244,11 @@ docker-compose up -d
 ```
 Acesse o Jenkins no navegador:
 porta padrao
+
 ```sh
 http://localhost:8080
+Usuario: admin
+senha: admin
 ```
 
 vai pedir a senha de administrador do jenkins
@@ -266,6 +269,7 @@ Please use the following password to proceed to installation:
 #### feito toda a configuração e hora de fazer o commit no GITHUB e pegar o caminho para configurar o jenkins
 
 Agora, dentro do Jenkins:
+
 1. Instale os plugins: **Pipeline, Allure Report, Docker Pipeline**.
 2. Crie um novo pipeline e adicione o seguinte `Jenkinsfile`:
 3. Configure a integração do Allure Report.
