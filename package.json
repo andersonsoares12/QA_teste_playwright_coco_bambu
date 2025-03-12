@@ -1,0 +1,26 @@
+{
+  "name": "cb_delivery",
+  "version": "1.0.0",
+  "description": "Teste de QA para o delivery coco bambu",
+  "homepage": "https://github.com/andersonsoares12/QA_teste_playwright_coco_bambu#readme",
+  "bugs": {
+    "url": "https://github.com/andersonsoares12/QA_teste_playwright_coco_bambu/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andersonsoares12/QA_teste_playwright_coco_bambu.git"
+  },
+  "license": "ISC",
+  "author": "Anderson Soares",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {},
+  "devDependencies": {
+    "@playwright/test": "^1.51.0",
+    "@types/node": "^22.13.10",
+    "allure-playwright": "^3.2.0"
+  },
+  "dependencies": {
+    "allure-commandline": "^2.33.0"
+  }
+}
