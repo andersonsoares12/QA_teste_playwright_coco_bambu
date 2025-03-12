@@ -11,7 +11,7 @@
 
 // import { test, expect } from '@playwright/test';
 // import { realizarLogin } from './utils/loginHelper'; // Importa a função de login
-// import { log } from 'console';
+
 
 // test.use({ browserName: 'firefox' }); 
 
@@ -19,7 +19,7 @@
 // test.describe('Validando pagamento via pix', () => {
 // test('Validando pagamento via pix com falha', async ({ page }) => {
   
-//   log('Teste validar pagamento via pix iniciado');
+
 // /*
 // quando se faz a troca de pagamento para pix o sistema apresenta um bug pois nao consegue [rocessar o pagamento sendo inviale a automação (PAGAMENTO VIA PIX)
 // */

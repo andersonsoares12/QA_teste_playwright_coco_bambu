@@ -10,7 +10,7 @@
 
 // import { test, expect } from '@playwright/test';
 // import { realizarLogin } from './utils/loginHelper'; // Importa a função de login
-// import { log } from 'console';
+
 
 // test.use({ browserName: 'firefox' }); 
 
@@ -18,7 +18,7 @@
 // test('Pagamento em processamento impede de colocar novos itens ao carrinho', async ({ page }) => {
 
   
-//   log('Teste validar pagamento em processamento iniciado');
+
 //   //const email = 'andersonsoares.jk@gmail.com';
 //   const email = 'anderson.teste.qa.01@gmail.com';
 //   const password = '@As12no23';
