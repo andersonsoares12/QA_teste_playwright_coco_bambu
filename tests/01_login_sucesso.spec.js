@@ -1,9 +1,15 @@
 import { test, expect } from '@playwright/test';
 import { preencherOtpCampos } from './utils/otpHelper'; // Importa a função de preenchimento dos campos OTP
-import { describe } from 'node:test';
+import { log } from 'console';
+
+test.use({ browserName: 'firefox' }); 
 
 test.describe('Login com sucesso', () => {
+
 test('Login com sucesso', async ({ page }) => {
+  
+
+  log('Teste de login iniciado');
   // const email = 'andersonsoares.jk@gmail.com';
   const email = 'anderson.teste.qa.01@gmail.com';
   const password = '@As12no23';
@@ -14,7 +20,6 @@ test('Login com sucesso', async ({ page }) => {
   // Navegar para a página inicial
   await page.goto('/');
   const currentUrl = page.url();
-  console.log(`URL atual: ${currentUrl}`);
 
   // Clicar no botão "Entrar"
   await page.getByText('Entrar').click();
@@ -43,7 +48,7 @@ test('Login com sucesso', async ({ page }) => {
   await page.waitForURL('https://app-hom.cocobambu.com/delivery');
   await page.getByText('Promoções').first().isVisible();
  
-
+  await page.close();
 
 });
 });

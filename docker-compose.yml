@@ -4,7 +4,7 @@ services:
   # Serviço de Jenkins para integração contínua
   jenkins:
     build: ./jenkins                # Usa o Dockerfile localizado na pasta ./jenkins
-    container_name: jenkins-server  # Define um nome amigável para o contêiner
+    container_name: coco_bambu_server_jenkins  # Define um nome amigável para o contêiner
     privileged: true                # Concede permissões elevadas ao contêiner (necessário para Docker-in-Docker)
     user: root                      # Executa o contêiner como usuário root para garantir permissões
     networks:

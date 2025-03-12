@@ -1,7 +1,9 @@
 # Playwright + Docker + Jenkins + Allure Report + VS Code
 
 ## 📌 Sobre o Projeto
-Este repositório contém uma configuração completa para executar testes automatizados com **Playwright** em um ambiente **Docker**, integrado com **Jenkins** para CI/CD e geração de relatórios usando **Allure Report**. Além disso, o projeto é otimizado para desenvolvimento no **VS Code**.
+Este repositório contém uma configuração completa para executar testes automatizados com **Playwright** em um ambiente **Docker**, integrado com **Jenkins** para CI/CD e geração de relatórios usando **Allure Report**. Além disso, o projeto é otimizado para desenvolvimento no **VS Code**. 
+*** OBS: sé e necessario fazer a configuração do Docker + Jenkins se quiser implementar o CI/CD do Jenkins ***
+
 
 ---
 
@@ -71,6 +73,14 @@ allure generate ./allure-results -o ./allure-report --clean && allure open ./all
 
 ---
 
+## Execução rapida do prejeto locamente :
+
+```sh
+npx playwright test
+allure generate ./allure-results -o ./allure-report --clean && allure open ./allure-report
+---
+```
+####  🔹 **ESSA INSTALAÇÃO SO E NECESSARIA CASO QUEIRA UMA ESTEIRA DE CI/CD COM JENKINS** 
 ### 2️⃣ Instalação do Docker
 
 ##### **Windows**:
@@ -315,13 +325,6 @@ allure generate ./allure-results -o ./allure-report --clean && allure open ./all
 ```
 
 ---
-
-## Execução rapida do prejeto locamente :
-
-```sh
-npx playwright test
-allure generate ./allure-results -o ./allure-report --clean && allure open ./allure-report
-```
 
 
 ## 📌 Conclusão

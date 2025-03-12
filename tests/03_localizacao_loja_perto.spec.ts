@@ -1,11 +1,15 @@
 import { test, expect } from '@playwright/test';
 import { realizarLogin } from './utils/loginHelper'; // Importa a função de login
-import { describe } from 'node:test';
+import { log } from 'console';
+
+test.use({ browserName: 'firefox' }); 
 
 test.describe('Localização loja perto', () => {
 test('Case localização loja perto falha', async ({ page }) => {
+  
+  log('Teste validar pagamento via pix iniciado');
   //const email = 'andersonsoares.jk@gmail.com';
-  const email = 'anderson.teste.qa.01@gmail.com';
+  const email = 'meucopocriativo@gmail.com';
   const password = '@As12no23';
   const otpValue = 'A';
   const otpFieldsCount = 6;
@@ -14,7 +18,6 @@ test('Case localização loja perto falha', async ({ page }) => {
   // Navegar para a página inicial
   await page.goto('/');
   const currentUrl = page.url();
-  console.log(`URL atual: ${currentUrl}`);
 
   // Realizar o login utilizando a função importada
   await realizarLogin(page, email, password, otpPrefix, otpFieldsCount, otpValue);
@@ -33,7 +36,7 @@ test('Case localização loja perto falha', async ({ page }) => {
   //verifica mensagem de erro
   await expect(page.locator('error-message-screen')).toContainText('Ops...');
   await expect(page.locator('error-message-screen')).toContainText('O endereço informado não é atendido por nenhuma das nossas lojas. Que tal tentar outro endereço?');
-
+  await page.close();
 });
 
 });
