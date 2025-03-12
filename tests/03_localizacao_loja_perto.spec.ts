@@ -7,7 +7,7 @@ test.use({ browserName: 'firefox' });
 test.describe('Localização loja perto', () => {
 test('Case localização loja perto falha', async ({ page }) => {
   
-  log('Teste validar pagamento via pix iniciado');
+  log('Teste localização loja perto falha iniciado');
   //const email = 'andersonsoares.jk@gmail.com';
   const email = 'meucopocriativo@gmail.com';
   const password = '@As12no23';
