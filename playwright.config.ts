@@ -33,7 +33,7 @@ export default defineConfig({
     // baseURL: 'https://app-hom.cocobambu.com',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    headless: false, //roda o teste com o navegador aberto
+    headless: true, //roda o teste com o navegador aberto
     launchOptions: {
       slowMo:500,
     },
