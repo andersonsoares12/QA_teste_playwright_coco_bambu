@@ -1,11 +1,13 @@
-
-# Playwright
+# Diretórios e arquivos gerados pelo Playwright
 node_modules/
-/test-results/
-/playwright-report/
-/blob-report/
-/playwright/.cache/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+
+# Relatórios de testes
 allure-results/
 allure-report/
-repositorio-backup/
-repositorio-backup2/
+
+# Backups do repositório
+repositorio-backup*/

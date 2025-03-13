@@ -6,7 +6,7 @@ test.use({ browserName: 'firefox' });
 
 test.describe('Adicionar item ao carrinho e validar cartão de crédito', () => {
 
-  test('01 validar cartão de crédito', async ({ page }) => {
+  test('02 validar cartão de crédito', async ({ page }) => {
     
     log('Teste validar cartão de crédito iniciado');
     

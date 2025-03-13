@@ -6,7 +6,7 @@ test.use({ browserName: 'firefox' });
 
 test.describe('Removendo itens da sacola', async () => {
 
-  test('01 Removendo itens da sacola', async ({ page }) => {
+  test('03 Removendo itens da sacola', async ({ page }) => {
     
     log('Teste Removendo itens da sacola iniciado');
     

@@ -4,6 +4,7 @@
 Este repositório contém uma configuração completa para executar testes automatizados com **Playwright** em um ambiente **Docker**, integrado com **Jenkins** para CI/CD e geração de relatórios usando **Allure Report**. Além disso, o projeto é otimizado para desenvolvimento no **VS Code**. 
 *** OBS: sé e necessario fazer a configuração do Docker + Jenkins se quiser implementar o CI/CD do Jenkins ***
 
+*** Ao utilizar o Vscode instalar o plugin do playwright for VsCode o plugin do docker para rodar todos os testes com mais facilidade. ***
 
 ---
 
@@ -207,8 +208,6 @@ pipeline {
 }
 ```
 
-
-
 #### **Windows**:
 Baixe e instale o Jenkins:
 ```sh
@@ -221,7 +220,7 @@ http://localhost:8080
 ```
 
 #### **macOS**:
-Instale o Jenkins via site official  "https://www.jenkins.io/doc/book/installing/docker/":  ja no link do docker
+_ Instale o Jenkins via site official  "https://www.jenkins.io/doc/book/installing/docker/":  ja no link do docker
 - va ate o item número 4 e copie e cole no arquivo Dockerfile dentro ta pasta jenkins na raiz do projeto onde vai ter toda configuração para iniciar o container do jenkins
 
 ```sh
@@ -238,12 +237,12 @@ RUN apt-get update && apt-get install -y docker-ce-cli
 USER jenkins
 RUN jenkins-plugin-cli --plugins "blueocean docker-workflow"
 ```
-feito tada a configuração hora de subir o container do jenkins no Docker:
+*** feito tada a configuração hora de subir o container do jenkins no Docker: ***
 ```sh
 docker-compose up -d
 ```
-Acesse o Jenkins no navegador:
-porta padrao
+*** Acesse o Jenkins no navegador: ***
+*** porta padrao ***
 
 ```sh
 http://localhost:8080
@@ -266,9 +265,9 @@ docker logs <ebb7f9ded9fd>
 Please use the following password to proceed to installation:
 729ba19222ce42ba885591c58c76c7f5
 ```
-#### feito toda a configuração e hora de fazer o commit no GITHUB e pegar o caminho para configurar o jenkins
+# feito toda a configuração e hora de fazer o commit no GITHUB e pegar o caminho para configurar o jenkins
 
-Agora, dentro do Jenkins:
+*** Agora, dentro do Jenkins: ***
 
 1. Instale os plugins: **Pipeline, Allure Report, Docker Pipeline**.
 2. Crie um novo pipeline e adicione o seguinte `Jenkinsfile`:
@@ -307,29 +306,44 @@ stage('Generate Allure Report') {
 ```
 
 
-#### **Rodar Jenkins via Docker**:   opcional
+# **Rodar Jenkins via Docker**:   opcional
 ```sh
 docker run -d --name jenkins -p 8080:8080 -p 50000:50000 -v jenkins_home:/var/jenkins_home jenkins/jenkins:lts
-``
+```
 
 ---
 
 ### 5️⃣ Executando os Testes localmente sem precisar subir para uma pipeline do jenkins
-Rodar localmente:
+*** Rodar localmente: ***
 ```sh
 npx playwright test
 ```
 
 ---
 
-### 📊 Visualizando os Relatórios localmente
-Gerar e visualizar o relatório Allure:
+# 📊 Visualizando os Relatórios localmente
+*** Gerar e visualizar o relatório Allure: ***
+
 ```sh
 allure generate ./allure-results -o ./allure-report --clean && allure open ./allure-report
 ```
 
 ---
+*** Comandos para rodor todos os casos de testes no terminal ***
+- npx playwright test 01_login_sucesso.spec.js
+- npx playwright test 02_adicionando_ao_carrinho_validando_cartao_credito.spec.ts
+- npx playwright test 03_removendo_itens_da_sacola.spec.ts
+- npx playwright test 04_localizacao_loja_perto.spec.ts
 
+# ** Teste e API ** Não precisa de configuração nenhuma ja foi consfigurado
+*** comando para rodar os testes de api e o Allure report para visializar o relatório ***
+
+```sh
+npx playwright test cart-api.spec.js  
+```
+```sh
+allure generate ./allure-results -o ./allure-report --clean && allure open ./allure-report
+```
 
 ## 📌 Conclusão
 Agora você tem um ambiente completo para testes automatizados com **Playwright, Docker, Jenkins e Allure**, tudo pronto para rodar no **VS Code**! 🚀
